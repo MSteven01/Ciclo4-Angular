@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login almacenes la generica</title>
+  </head>
+  <body>
+    <app-navbarlogin></app-navbarlogin>
+    <div class="container card-login">
+      <div
+        class="card position-absolute top-50 start-50 translate-middle rounded"
+      >
+        <div class="card-header">
+          <h2 class="mb-3 p-2">Bienvenido a cadena de almacenes la generica</h2>
+        </div>
+
+        <div class="p-4">
+          <div
+            *ngIf="verificacion_correcto == 1"
+            class="alert alert-success animate__bounceIn mb-2"
+            role="alert"
+          >
+            <i class="fas fa-check-circle"></i> Acceso Correcto
+          </div>
+          <div
+            *ngIf="verificacion_correcto == 0"
+            class="alert alert-danger animate__bounceIn animate__repeat-2 mb-2"
+            role="alert"
+          >
+            <i class="fas fa-times-circle"></i>Datos incorrectos
+          </div>
+          <div
+            *ngIf="verificacion_correcto == -1"
+            class="alert alert-danger animate__bounceIn animate__repeat-2 mb-2"
+            role="alert"
+          >
+            <i class="fas fa-times-circle"></i> Ingresa usuario o contraseña
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"
+              ><i class="fas fa-user"></i
+            ></span>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Username"
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+              [(ngModel)]="user"
+            />
+          </div>
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1"
+              ><i class="fas fa-lock"></i
+            ></span>
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Password"
+              aria-label="Password"
+              aria-describedby="basic-addon1"
+              [(ngModel)]="pass"
+            />
+          </div>
+          <div class="d-grid gap-2 mb-1 mt-4">
+            <button class="btn btn-info" type="button" (click)="comparar()">
+              Ingresar
+            </button>
+          </div>
+          <div class="d-grid gap-2 mb-3">
+            <button class="btn btn-light btn-cuenta" type="button">
+              Crear Cuenta
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

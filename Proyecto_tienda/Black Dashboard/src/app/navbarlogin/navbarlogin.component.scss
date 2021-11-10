@@ -1,0 +1,19 @@
+.navbar > .container,
+.navbar > .container-fluid {
+  font-family: sans-serif;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.navbar {
+  position: relative;
+  background-color: #27293d !important;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.icon-navbar{
+    margin-right: 5%;
+}
