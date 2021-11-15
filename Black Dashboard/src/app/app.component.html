@@ -1,0 +1,35 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<router-outlet></router-outlet>
+
+<!--      POST     --     
+<button class="btn" (click)="postData()">Enviar datos</button>{{codigorespuesta}}
+
+<input type="text" [(ngModel)]="username">
+<input type="text" [(ngModel)]="password">
+<input type="text" [(ngModel)]="nombre">
+<input type="text" [(ngModel)]="correo">
+-->
+<!--<app-login></app-login>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Pais</th>
+            <th>web</th>
+            <th>Dominio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let universidad of contenido">
+            <td [ngClass]="{'text-danger':universidad.alpha_two_code=='US',
+            'text-danger':universidad.alpha_two_code!='US'}">{{universidad.alpha_two_code}}</td>
+            <td>{{universidad.name}}</td>
+            <td>{{universidad.country}}</td>
+            <td>{{universidad.web_pages[0]}}</td>
+            <td>{{universidad.domains}}</td>
+
+        </tr>
+    </tbody>
+</table>
+-->

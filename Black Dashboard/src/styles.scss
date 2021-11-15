@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-image: url(https://cdn.pixabay.com/photo/2020/10/01/17/11/store-5619201_960_720.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.dataTables_wrapper .dataTables_length,
+.dataTables_wrapper .dataTables_filter,
+.dataTables_wrapper .dataTables_info,
+.dataTables_wrapper .dataTables_processing,
+.dataTables_wrapper .dataTables_paginate {
+  color: #757358 !important;
+}
+
+.dataTables_wrapper .dataTables_length select {
+  border: 1 px solid #aaa;
+  border-radius: 3 px;
+  padding: 5 px;
+  background-color: transparent;
+  padding: 4 px;
+  color: #c2c1b1;
+}
+
+.white-content .table > thead > tr > th, .white-content .table button.btn-neutral.btn-link {
+    color: aliceblue !important;
+}
+.white-content .table > tbody > tr > td {
+    color: aliceblue !important;
+}

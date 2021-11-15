@@ -1,0 +1,65 @@
+<div class="content">
+
+  <div
+    *ngIf="validacion == 1"
+    class="alert alert-danger animate__bounceIn animate__repeat-2 mb-2"
+    role="alert"
+  >
+    <i class="fas fa-times-circle"></i>Ingrese un archivo csv
+  </div>
+
+  <div
+  *ngIf="validacion == 2"
+  class="alert alert-success animate__bounceIn animate__repeat-2 mb-2"
+  role="alert"
+>
+  <i class="fas fa-check-circle"></i>Archivo cargado
+</div>
+
+  <div class="text-start mb-3 me-5">
+    <input
+      class="form-control"
+      type="file"
+      accept=".csv"
+      (change)="onChange($event)"
+    />
+    <div class="d-grid gap-2">
+      <button (click)="onUpload()" class="btn btn-info mt-3">
+        Cargar productos
+      </button>
+    </div>
+  </div>
+
+  <!--div class="container">
+    <h3 *ngFor="let dato of resultados; let i = index">
+      Dato {{ i }} obtuvo codigo {{ resultados }}
+    </h3>
+  </div-->
+
+  <div
+    class="
+      table-responsive-sm
+      table-responsive-md
+      table-responsive-lg
+      table-responsive-xl
+    "
+  >
+    <table
+      class="compact nowrap table table-dark table-hover"
+      datatable
+      [dtOptions]="dtOptions"
+      [dtTrigger]="dtTrigger"
+    >
+      <tbody>
+        <tr *ngFor="let producto of contenido" class="">
+          <td>{{ producto.codigoproducto }}</td>
+          <td>{{ producto.nombreproducto }}</td>
+          <td>{{ producto.nitproveedor }}</td>
+          <td>{{ producto.preciocompra }}</td>
+          <td>{{ producto.ivacompra }}</td>
+          <td>{{ producto.precioventa }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
