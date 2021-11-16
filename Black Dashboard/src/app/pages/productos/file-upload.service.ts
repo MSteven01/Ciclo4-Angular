@@ -30,7 +30,7 @@ export class FileUploadService {
 
         for (let lineaactual of separados) {
           lineaactual.replace(";", ",");
-          let columnas = lineaactual.split(",", 7);
+          let columnas = lineaactual.split(",", 6);
           this.http.post(
             this.baseApiUrl,
             {/**  "id": "61916d68c568bb196723ac59",
@@ -51,10 +51,10 @@ export class FileUploadService {
   "precioventa": 0
 }*/
               codigoproducto: columnas[0],
-              nombreproducto: columnas[1],
+              ivacompra: columnas[1],
               nitproveedor: columnas[2],
-              ivacompra: columnas[4],
-              preciocompra: columnas[3],
+              nombreproducto: columnas[3],
+              preciocompra: columnas[4],
               precioventa: columnas[5]
             },
             { observe: 'response' }).subscribe(

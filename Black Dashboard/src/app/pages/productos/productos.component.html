@@ -29,12 +29,12 @@
       </button>
     </div>
   </div>
-
-  <!--div class="container">
+<!--
+  <div class="container">
     <h3 *ngFor="let dato of resultados; let i = index">
       Dato {{ i }} obtuvo codigo {{ resultados }}
     </h3>
-  </div-->
+  </div>-->
 
   <div
     class="
@@ -52,12 +52,12 @@
     >
       <tbody>
         <tr *ngFor="let producto of contenido" class="">
-          <td>{{ producto.codigoproducto }}</td>
-          <td>{{ producto.nombreproducto }}</td>
-          <td>{{ producto.nitproveedor }}</td>
-          <td>{{ producto.preciocompra }}</td>
-          <td>{{ producto.ivacompra }}</td>
-          <td>{{ producto.precioventa }}</td>
+          <td>{{producto.codigoproducto}}</td>
+          <td>{{producto.nombreproducto}}</td>
+          <td>{{producto.nitproveedor}}</td>
+          <td>{{producto.preciocompra}}</td>
+          <td>{{producto.ivacompra}}</td>
+          <td>{{producto.precioventa}}</td>
         </tr>
       </tbody>
     </table>
