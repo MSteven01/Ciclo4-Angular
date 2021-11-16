@@ -29,27 +29,11 @@ export class FileUploadService {
         let separados = lines.split("\n");
 
         for (let lineaactual of separados) {
-          lineaactual.replace(";", ",");
+         // lineaactual.replace(";", ",");
           let columnas = lineaactual.split(",", 6);
           this.http.post(
             this.baseApiUrl,
-            {/**  "id": "61916d68c568bb196723ac59",
-  "codigoproducto": null,
-  "ivacompra": null,
-  "nitproveedor": null,
-  "nombreproducto": null,
-  "preciocompra": null,
-  "precioventa": null 
-  
-  {
-  "codigoproducto": 0,
-  "id": "string",
-  "ivacompra": 0,
-  "nitproveedor": 0,
-  "nombreproducto": "string",
-  "preciocompra": 0,
-  "precioventa": 0
-}*/
+            {
               codigoproducto: columnas[0],
               ivacompra: columnas[1],
               nitproveedor: columnas[2],
