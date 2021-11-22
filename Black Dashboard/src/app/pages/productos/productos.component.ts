@@ -55,7 +55,7 @@ export class ProductosComponent implements OnInit {
   ngOnInit(): void {
     //utilizando el servicio en la url
     this.res = this.objetohttp.get(this.urlapiGET).pipe(catchError(this.handleError));
-
+    
     //suscribe el archivo json y lo convierte   
     this.res.subscribe((datos: any[]) => {
       this.contenido = datos;
@@ -118,8 +118,6 @@ export class ProductosComponent implements OnInit {
   //lista que almacenara los resultados de la insercion de cada linea
   resultados: any;
 
-  
-
   // Variable to store shortLink from api response
   file!: File; //variable para almacenar los datos
 
@@ -141,6 +139,7 @@ export class ProductosComponent implements OnInit {
       console.log(this.file);
       console.log(this.resultados);
       this.validacion = 2;
+      window.location.reload();
       
       /*if(this.resultados[0] == 201){
         this.validacion = 2;

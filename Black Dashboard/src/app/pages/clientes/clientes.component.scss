@@ -1,0 +1,24 @@
+.col-md {
+  background-color: #252a3600 !important;
+}
+.form-floating {
+  position: relative;
+  color: #ffffff;
+  font-size: larger;
+}
+.form-floating > .form-control {
+  padding: 1 rem 0.75 rem;
+  font-size: medium;
+}
+.form-control:focus {
+  border-color: #a5ddf9;
+  background-color: transparent;
+  box-shadow: none;
+}
+.col-md {
+  background-color: #252a36;
+}
+.form-floating > .form-control:focus,
+.form-floating > .form-control:not(:placeholder-shown) {
+  padding-top: 2.2rem;
+}

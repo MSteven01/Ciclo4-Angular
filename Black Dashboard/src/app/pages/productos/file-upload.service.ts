@@ -21,7 +21,7 @@ export class FileUploadService {
   upload(file: any): Promise<any[]> {
     return new Promise<any[]>((resolve, reject) => {
       //leyendo el contenido
-      var reader = new FileReader();
+      var reader = new FileReader(); //FileReader para leer y escribir en un archivo
       reader.onloadend = (e) => {
 
         let lines = reader.result as string;
@@ -30,32 +30,16 @@ export class FileUploadService {
 
         for (let lineaactual of separados) {
           lineaactual.replace(";", ",");
-          let columnas = lineaactual.split(",", 7);
+          let columnas = lineaactual.split(",");
           this.http.post(
             this.baseApiUrl,
-            {/**  "id": "61916d68c568bb196723ac59",
-  "codigoproducto": null,
-  "ivacompra": null,
-  "nitproveedor": null,
-  "nombreproducto": null,
-  "preciocompra": null,
-  "precioventa": null 
-  
-  {
-  "codigoproducto": 0,
-  "id": "string",
-  "ivacompra": 0,
-  "nitproveedor": 0,
-  "nombreproducto": "string",
-  "preciocompra": 0,
-  "precioventa": 0
-}*/
-              codigoproducto: columnas[0],
-              nombreproducto: columnas[1],
-              nitproveedor: columnas[2],
-              ivacompra: columnas[4],
-              preciocompra: columnas[3],
-              precioventa: columnas[5]
+            {
+              "codigoproducto": columnas[0],
+              "nombreproducto": columnas[1],
+              "nitproveedor": columnas[2],
+              "preciocompra": columnas[3],
+              "ivacompra": columnas[4],
+              "precioventa": columnas[5]
             },
             { observe: 'response' }).subscribe(
               (response: any) => {

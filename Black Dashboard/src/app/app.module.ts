@@ -15,6 +15,8 @@ import { ComponentsModule } from "./components/components.module";
 import { LoginComponent } from './login/login.component';
 import { NavbarloginComponent } from './navbarlogin/navbarlogin.component';
 import { ProductosComponent } from './pages/productos/productos.component';
+import { ClientesComponent } from './pages/clientes/clientes.component';
+
 
 
 @NgModule({
@@ -29,7 +31,7 @@ import { ProductosComponent } from './pages/productos/productos.component';
     DataTablesModule,
     ToastrModule.forRoot()   
   ],
-  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, NavbarloginComponent, ProductosComponent],
+  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, NavbarloginComponent, ProductosComponent, ClientesComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
