@@ -25,6 +25,7 @@ export const ROUTES: RouteInfo[] = [
     icon: 'icon-atom',
     class: ''
   }
+
 ];
 
 @Component({
