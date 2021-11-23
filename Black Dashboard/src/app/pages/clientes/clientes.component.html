@@ -6,15 +6,23 @@
   *ngIf="codigorespuesta == 1"
   class="alert alert-danger animate__bounceIn animate__repeat-2 mb-2"
   role="alert">
-  <i class="fas fa-times-circle"></i>Complete todos los campos
-</div>
+  <i class="fas fa-times-circle me-2"></i>Complete todos los campos
+  </div>
 
 <div
 *ngIf="codigorespuesta == 2"
 class="alert alert-success animate__bounceIn animate__repeat-2 mb-2"
 role="alert"
 >
-<i class="fas fa-check-circle"></i>Datos enviados con exito
+<i class="fas fa-check-circle me-2"></i>Datos enviados con exito
+</div>
+
+<div
+*ngIf="codigorespuesta == 3"
+  class="alert alert-danger animate__bounceIn animate__repeat-2 mb-2"
+  role="alert">
+>
+<i class="fas fa-times-circle me-2"></i>Ups algo salio mal.
 </div>
 
   <form class="row g-3 needs-validation" novalidate>
@@ -75,10 +83,34 @@ role="alert"
       </div>
     </div>
   </form>
+
+
+  
+  <div
+    class="
+      mt-3
+      table-responsive-sm
+      table-responsive-md
+      table-responsive-lg
+      table-responsive-xl
+    "
+  >
+    <table
+      class="compact nowrap table table-dark table-hover"
+      datatable
+      [dtOptions]="dtOptions"
+      [dtTrigger]="dtTrigger"
+    >
+      <tbody>
+        <tr *ngFor="let clientes of contenido">
+          <td>{{ clientes.cedula }}</td>
+          <td>{{ clientes.telefono }}</td>
+          <td>{{ clientes.nombrecompleto }}</td>
+          <td>{{ clientes.email }}</td>
+          <td>{{ clientes.direccion }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<!--
-<input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="test@example.com">
-<label for="floatingInputValue"></label>
-<button class="btn" (click)="postData()">Enviar datos</button
-    >{{ codigorespuesta }}-->
