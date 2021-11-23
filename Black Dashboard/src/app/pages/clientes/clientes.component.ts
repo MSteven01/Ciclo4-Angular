@@ -1,5 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { catchError, Subject, throwError } from 'rxjs';
 
 @Component({
@@ -9,7 +11,7 @@ import { catchError, Subject, throwError } from 'rxjs';
 })
 export class ClientesComponent implements OnInit {
 
-  constructor(private objetohttp: HttpClient) { }
+  constructor(private objetohttp: HttpClient, private toastr: ToastrService, private router: Router) { }
 
   //////////////////// GET ///////////////////
   dtOptions: DataTables.Settings = {};
@@ -39,9 +41,9 @@ export class ClientesComponent implements OnInit {
 
   ngOnInit(): void {
     this.res = this.objetohttp.get(this.urlapiGET).pipe
-    (catchError(this.handleError));
+      (catchError(this.handleError));
 
-    this.res.subscribe((datos:any[])=>{
+    this.res.subscribe((datos: any[]) => {
       this.contenido = datos;
       console.log(this.contenido);
       this.dtTrigger.next(this.dtOptions);
@@ -50,22 +52,22 @@ export class ClientesComponent implements OnInit {
     this.dtOptions = {
       pagingType: 'full_numbers',
       columns: [
-      {
-        title: 'Cédula',
-      }, 
-      {
-        title: 'Teléfono',
-      },
-      {
-        title: 'Nombre completo',
-      },
-      {
-        title: 'Correo electrónico',
-      },
-      {
-        title: 'Dirección',
-      }
-     ],
+        {
+          title: 'Cédula',
+        },
+        {
+          title: 'Teléfono',
+        },
+        {
+          title: 'Nombre completo',
+        },
+        {
+          title: 'Correo electrónico',
+        },
+        {
+          title: 'Dirección',
+        }
+      ],
       pageLength: 10,
       responsive: true,
       language: {
@@ -92,7 +94,7 @@ export class ClientesComponent implements OnInit {
       }
     };
   }
-  
+
 
   ////////////// POST /////////////////////
 
@@ -107,7 +109,7 @@ export class ClientesComponent implements OnInit {
 
     if (this.cedula == null || this.telefono == null || this.nombrecompleto == null || this.email == null || this.direccion == null) {
       this.codigorespuesta = 1;
-
+      this.showNotification('top', 'right', 3);
     } else {
       this.objetohttp.post<any>(
         //url de la bd
@@ -125,16 +127,52 @@ export class ClientesComponent implements OnInit {
         }
       ).subscribe(response => {//Codigo de respuesta
         this.codigorespuesta = response.status;
-        if(this.codigorespuesta == 201){
+        if (this.codigorespuesta == 201) {
           this.codigorespuesta = 2;
-          window.location.reload();
-        }else{
+          this.showNotification('top', 'right', 1);
+        } else {
           this.codigorespuesta = 3;
+          this.showNotification('top', 'right', 2);
         }
-     
       });
-      
     }
   }
+
+  /////////// NOTIFICACIONES DE TOAST ///////////////////////
+
+  showNotification(from, align, type) {
+    switch (type) {
+      case 1:
+        this.toastr.success('<span class="tim-icons icon-check-2" [data-notify]="icon"></span><b>Datos enviados con éxito</b>', '', {
+          disableTimeOut: false,
+          closeButton: true,
+          enableHtml: true,
+          toastClass: 'alert alert-success alert-with-icon',
+          positionClass: 'toast-' + from + '-' + align
+        });
+        break;
+      case 2:
+        this.toastr.error('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> <b>Error al registrar los datos.</b>', '', {
+          disableTimeOut: false,
+          enableHtml: true,
+          closeButton: true,
+          toastClass: 'alert alert-danger alert-with-icon',
+          positionClass: 'toast-' + from + '-' + align
+        });
+      case 3:
+        this.toastr.error('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> <b>Complete todos los campos.</b>', '', {
+          disableTimeOut: false,
+          enableHtml: true,
+          closeButton: true,
+          toastClass: 'alert alert-danger alert-with-icon',
+          positionClass: 'toast-' + from + '-' + align
+        });
+        break;
+      default:
+        break;
+    }
+  }
+
+
 
 }

@@ -139,8 +139,7 @@ export class ProductosComponent implements OnInit {
       console.log(this.file);
       console.log(this.resultados);
       this.validacion = 2;
-      window.location.reload();
-      
+     
       /*if(this.resultados[0] == 201){
         this.validacion = 2;
         alert("xd")

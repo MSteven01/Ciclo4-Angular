@@ -1,46 +1,56 @@
 <div class="content">
-
   <h1 style="text-align: center">Registro de Clientes</h1>
-  
+
   <div
-  *ngIf="codigorespuesta == 1"
-  class="alert alert-danger animate__bounceIn animate__repeat-2 mb-2"
-  role="alert">
-  <i class="fas fa-times-circle me-2"></i>Complete todos los campos
+    *ngIf="codigorespuesta == 1"
+    class="alert alert-danger animate__bounceIn animate__repeat-2 mb-2"
+    role="alert"
+  >
+    <i class="fas fa-times-circle me-2"></i>Complete todos los campos
   </div>
 
-<div
-*ngIf="codigorespuesta == 2"
-class="alert alert-success animate__bounceIn animate__repeat-2 mb-2"
-role="alert"
->
-<i class="fas fa-check-circle me-2"></i>Datos enviados con exito
-</div>
+  <div
+    *ngIf="codigorespuesta == 2"
+    class="alert alert-success animate__bounceIn animate__repeat-2 mb-2"
+    role="alert"
+  >
+    <i class="fas fa-check-circle me-2"></i>Datos enviados con exito
+  </div>
 
-<div
-*ngIf="codigorespuesta == 3"
-  class="alert alert-danger animate__bounceIn animate__repeat-2 mb-2"
-  role="alert">
->
-<i class="fas fa-times-circle me-2"></i>Ups algo salio mal.
-</div>
+  <div
+    *ngIf="codigorespuesta == 3"
+    class="alert alert-danger animate__bounceIn animate__repeat-2 mb-2"
+    role="alert"
+  >
+    >
+    <i class="fas fa-times-circle me-2"></i>Ups algo salio mal.
+  </div>
 
   <form class="row g-3 needs-validation" novalidate>
     <div class="registro">
       <div class="row g-2 mb-3">
         <div class="col-md">
           <div class="form-floating">
-
-            <input type="number" class="form-control" placeholder="." [(ngModel)]="cedula"/>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="."
+              [(ngModel)]="cedula"
+            />
             <label for="floatingInputGrid"
-              ><i class="fas fa-id-card me-2"></i>Cédula:</label>
-
+              ><i class="fas fa-id-card me-2"></i>Cédula:</label
+            >
           </div>
         </div>
 
         <div class="col-md">
           <div class="form-floating">
-            <input type="number" class="form-control" placeholder="." [(ngModel)]="telefono"/>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="."
+              [(ngModel)]="telefono"
+            />
             <label for="floatingInputGrid"
               ><i class="fas fa-phone me-2"></i>Teléfono:</label
             >
@@ -51,7 +61,12 @@ role="alert"
       <div class="row g-2 mb-3">
         <div class="col-md">
           <div class="form-floating">
-            <input type="text" class="form-control" placeholder="." [(ngModel)]="nombrecompleto"/>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="."
+              [(ngModel)]="nombrecompleto"
+            />
             <label for="floatingInputGrid"
               ><i class="fas fa-user me-2"></i>Nombre completo:</label
             >
@@ -59,7 +74,12 @@ role="alert"
         </div>
         <div class="col-md">
           <div class="form-floating">
-            <input type="email" class="form-control" placeholder="." [(ngModel)]="email"/>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="."
+              [(ngModel)]="email"
+            />
             <label for="floatingInputGrid"
               ><i class="fas fa-at me-2"></i>Correo electrónico:</label
             >
@@ -70,7 +90,12 @@ role="alert"
       <div class="row g-1 mb-3">
         <div class="col-md">
           <div class="form-floating">
-            <input type="text" class="form-control" placeholder="." [(ngModel)]="direccion"/>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="."
+              [(ngModel)]="direccion"
+            />
             <label for="floatingInputGrid"
               ><i class="fas fa-map-marker-alt me-2"></i>Dirección:</label
             >
@@ -84,8 +109,6 @@ role="alert"
     </div>
   </form>
 
-
-  
   <div
     class="
       mt-3
@@ -112,5 +135,5 @@ role="alert"
       </tbody>
     </table>
   </div>
-</div>
 
+</div>
