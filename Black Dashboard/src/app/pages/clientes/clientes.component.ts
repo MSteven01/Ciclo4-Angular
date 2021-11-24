@@ -18,8 +18,9 @@ export class ClientesComponent implements OnInit {
   dtTrigger: Subject<any> = new Subject<any>();
 
   res: any;
-  contenido: any;
+  contenido!: any;
   urlapiGET: string = "http://localhost:8080/api/clientes";
+
 
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Error desconocido!';
@@ -95,10 +96,10 @@ export class ClientesComponent implements OnInit {
     };
   }
 
-
   ////////////// POST /////////////////////
 
   codigorespuesta!: number;
+  id!: string;
   cedula!: string;
   telefono!: string;
   nombrecompleto!: string;
@@ -108,8 +109,7 @@ export class ClientesComponent implements OnInit {
   postData() {
 
     if (this.cedula == null || this.telefono == null || this.nombrecompleto == null || this.email == null || this.direccion == null) {
-      this.codigorespuesta = 1;
-      this.showNotification('top', 'right', 3);
+      this.showNotification('top','right',4);
     } else {
       this.objetohttp.post<any>(
         //url de la bd
@@ -128,15 +128,105 @@ export class ClientesComponent implements OnInit {
       ).subscribe(response => {//Codigo de respuesta
         this.codigorespuesta = response.status;
         if (this.codigorespuesta == 201) {
-          this.codigorespuesta = 2;
           this.showNotification('top', 'right', 1);
+          this.cedula = "";
+          this.nombrecompleto = "";
+          this.telefono = "";
+          this.email = "";
+          this.direccion = "";
         } else {
           this.codigorespuesta = 3;
-          this.showNotification('top', 'right', 2);
+          this.showNotification('top', 'right', 3);
         }
       });
     }
   }
+
+
+  //////////// BUSCAR CLIENTE ////////////////////
+
+  buscarcliente() {
+    if (this.cedula == null) {
+      this.showNotification('top', 'right', 5);
+    } else {
+      this.res = this.objetohttp.get(this.urlapiGET + "?cedula=" + this.cedula);
+      this.res.subscribe((data: any[]) => {
+        this.contenido = data;
+        console.log(this.contenido);
+        if (this.contenido == null) {
+          this.showNotification('top', 'right', 6);
+          this.telefono = null;
+          this.nombrecompleto = null;
+          this.email = null;
+          this.direccion = null;
+          this.id = null;
+        } else {
+          this.nombrecompleto = this.contenido[0].nombrecompleto;
+          this.telefono = this.contenido[0].telefono;
+          this.email = this.contenido[0].email;
+          this.direccion = this.contenido[0].direccion;
+          this.id = this.contenido[0].id;
+        }
+      });
+    }
+  }
+
+
+
+  /////////// ELIMINAR CLIENTE ////////////////////////
+
+
+  eliminarcliente() {
+    this.res = this.objetohttp.delete(this.urlapiGET + "/" + this.id);
+    if (this.id == null) {
+      this.showNotification('top', 'right', 5);
+    } else {
+      this.res.subscribe((data: any[]) => {
+        this.contenido = data;
+        console.log(this.contenido);
+        this.showNotification('top','right',7);
+      })
+    }
+  }
+
+
+  //////////////////// Actualizar cliente //////////////////////////////
+
+
+  actualizarcliente() {
+
+    if (this.telefono == null || this.nombrecompleto == null || this.email == null || this.direccion == null) {
+    this.showNotification('top','right',4);
+    } else {
+    this.objetohttp.put<any>(
+      this.res = (this.urlapiGET + "/" + this.id),
+      {
+        "telefono": this.telefono,
+        "nombrecompleto": this.nombrecompleto,
+        "email": this.email,
+        "direccion": this.direccion
+      },
+      {
+        observe: 'response'
+      }
+    ).subscribe(response => {//Codigo de respuesta
+      this.codigorespuesta = response.status;
+      console.log(this.codigorespuesta);
+      this.showNotification('top','right',2);
+      this.cedula = "";
+      this.telefono = "";
+      this.nombrecompleto = "";
+      this.email = "";
+      this.direccion = "";
+      this.id = "";
+    });}
+  }
+
+
+  tablaclietnes(){
+    this.router.navigate(['/tablaclientes']);
+  }
+
 
   /////////// NOTIFICACIONES DE TOAST ///////////////////////
 
@@ -152,6 +242,24 @@ export class ClientesComponent implements OnInit {
         });
         break;
       case 2:
+        this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> <b>Datos Actualizados</b>', '', {
+          disableTimeOut: false,
+          enableHtml: true,
+          closeButton: true,
+          toastClass: 'alert alert-success alert-with-icon',
+          positionClass: 'toast-' + from + '-' + align
+        });
+        break;
+        case 7:
+          this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> <b>Datos eliminados</b>', '', {
+            disableTimeOut: false,
+            enableHtml: true,
+            closeButton: true,
+            toastClass: 'alert alert-success alert-with-icon',
+            positionClass: 'toast-' + from + '-' + align
+          });
+          break;
+      case 3:
         this.toastr.error('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> <b>Error al registrar los datos.</b>', '', {
           disableTimeOut: false,
           enableHtml: true,
@@ -159,8 +267,27 @@ export class ClientesComponent implements OnInit {
           toastClass: 'alert alert-danger alert-with-icon',
           positionClass: 'toast-' + from + '-' + align
         });
-      case 3:
+        break;
+      case 4:
         this.toastr.error('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> <b>Complete todos los campos.</b>', '', {
+          disableTimeOut: false,
+          enableHtml: true,
+          closeButton: true,
+          toastClass: 'alert alert-danger alert-with-icon',
+          positionClass: 'toast-' + from + '-' + align
+        });
+        break;
+      case 5:
+        this.toastr.error('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> <b>Ingresa una cedula.</b>', '', {
+          disableTimeOut: false,
+          enableHtml: true,
+          closeButton: true,
+          toastClass: 'alert alert-danger alert-with-icon',
+          positionClass: 'toast-' + from + '-' + align
+        });
+        break;
+      case 6:
+        this.toastr.error('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> <b>Datos no encontrados.</b>', '', {
           disableTimeOut: false,
           enableHtml: true,
           closeButton: true,
@@ -172,7 +299,6 @@ export class ClientesComponent implements OnInit {
         break;
     }
   }
-
 
 
 }

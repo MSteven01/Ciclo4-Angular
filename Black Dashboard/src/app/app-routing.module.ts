@@ -13,10 +13,10 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
- /* {
+  {
     path: "",
     component: LoginComponent
-  },*/
+  },
   {
     path: "",
     component: AdminLayoutComponent,

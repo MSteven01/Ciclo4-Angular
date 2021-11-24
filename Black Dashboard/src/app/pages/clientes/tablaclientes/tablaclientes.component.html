@@ -1,0 +1,32 @@
+<div class="content">
+
+  <h1 style="text-align: center;">Tabla de todos los clientes</h1>
+
+<div
+class="
+  me-5
+  mt-3
+  table-responsive-sm
+  table-responsive-md
+  table-responsive-lg
+  table-responsive-xl
+"
+>
+<table
+  class="compact nowrap table table-dark table-hover"
+  datatable
+  [dtOptions]="dtOptions"
+  [dtTrigger]="dtTrigger"
+>
+  <tbody>
+    <tr *ngFor="let clientes of contenido">
+      <td>{{ clientes.cedula }}</td>
+      <td>{{ clientes.telefono }}</td>
+      <td>{{ clientes.nombrecompleto }}</td>
+      <td>{{ clientes.email }}</td>
+      <td>{{ clientes.direccion }}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
