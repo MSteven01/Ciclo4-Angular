@@ -5,38 +5,60 @@ body {
   background-attachment: fixed;
 }
 
+///Tablas
+
 .dataTables_wrapper .dataTables_length,
 .dataTables_wrapper .dataTables_filter,
 .dataTables_wrapper .dataTables_info,
 .dataTables_wrapper .dataTables_processing,
-.dataTables_wrapper .dataTables_paginate {
+.dataTables_wrapper .dataTables_paginate,
+.dataTables_length select {
   color: #757358 !important;
 }
 
-.dataTables_wrapper .dataTables_length select {
-  border: 1 px solid #aaa;
-  border-radius: 3 px;
-  padding: 5 px;
-  background-color: transparent;
-  padding: 4 px;
-  color: #c2c1b1;
+.white-content .table > thead > tr > th {
+  color: aliceblue !important;
 }
 
-.white-content .table > thead > tr > th,
-.white-content .table button.btn-neutral.btn-link {
-  color: aliceblue !important;
-}
 .white-content .table > tbody > tr > td {
   color: aliceblue !important;
+  background-color: white !important;
 }
+
+.white-content .table-hover > tbody > tr:hover {
+  --bs-table-accent-bg: rgb(190, 190, 190) !important;
+}
+
+///// Colores Sidebar ////////////
 
 .sidebar,
 .sidebar[data="red"],
 .off-canvas-sidebar,
 .off-canvas-sidebar[data="red"] {
-  background: #ec250d;
-  background: linear-gradient(0deg, #84cdb3 0%, #1e1e2e 100%) !important;
+  background: #0098f0;
+  background: linear-gradient(0deg, #104add 0%, #5acbd8 100%) !important;
 }
+
+.sidebar[data="green"],
+.off-canvas-sidebar[data="green"] {
+  background: #0098f0;
+  background: linear-gradient(0deg, #1c46b1 0%, #5da22b 100%) !important;
+}
+
+.sidebar[data="blue"],
+.off-canvas-sidebar[data="blue"] {
+  background: #0098f0;
+  background: linear-gradient(0deg, #104add 0%, #5acbd8 100%) !important;
+}
+
+.sidebar[data="primary"],
+.off-canvas-sidebar[data="primary"] {
+  background: #ba54f5;
+  background: linear-gradient(0deg, #d82b0c 0%, #9a6725 100%) !important;
+}
+
+/////////Tamaño de items del sidebar///////////////////
+
 .sidebar,
 .off-canvas-sidebar {
   width: 200px !important;
@@ -56,10 +78,47 @@ body {
 }
 
 .logo-img img {
-  width: 100px !important;
+  width: 44px !important;
 }
 
 img {
   max-width: 136% !important;
   border-radius: 0.2857 rem;
+}
+
+///////// Cambio de color fondo e items ///////////
+
+.white-content {
+  background: repeating-linear-gradient(
+    45deg,
+    black,
+    transparent 100px
+  ) !important;
+}
+
+.white-content .main-panel {
+  background: linear-gradient(0deg, #ffffffe0 0%, #e2eafbd6 100%) !important;
+}
+.main-panel {
+  position: relative;
+  float: right;
+  width: 100%;
+  min-height: 100 vh;
+  border-top: 0px !important;
+  background: linear-gradient(#14141bd6, #1e1e24) !important;
+  transition: all 0.5s cubic-bezier(0.685, 0.0473, 0.346, 1);
+}
+
+.white-content h1,
+.white-content h2,
+.white-content h3,
+.white-content h4,
+.white-content h5,
+.white-content h6,
+.white-content p,
+.white-content ol li,
+.white-content ul li,
+.white-content label,
+.white-content pre {
+  color: #1d253b !important;
 }

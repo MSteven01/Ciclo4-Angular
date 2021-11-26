@@ -119,26 +119,24 @@
       </div>
     </div>
 
-    <div class="d-grid gap-2">
-      <button class="btn" (click)="postData()">Enviar datos</button>
+    <div class="row">
+      <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12">
+        <button class="btn" (click)="postData()">Enviar datos</button>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12">
+        <button class="btn" (click)="buscarcliente()">Buscar cliente</button>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12">
+        <button class="btn" (click)="eliminarcliente()">Eliminar cliente </button>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12">
+        <button class="btn" (click)="actualizarcliente()">Actualizar cliente</button>
+      </div>
+      <div class="mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12 d-grid gap-2">
+        <button class="btn" (click)="tablaclietnes()">
+          Mostrar todos los clientes
+        </button>
+      </div>
     </div>
-
-    <div class="d-grid gap-2">
-      <button class="btn" (click)="buscarcliente()">Buscar cliente</button>
-    </div>
-
-    <div class="d-grid gap-2">
-      <button class="btn" (click)="eliminarcliente()">Eliminar cliente</button>
-    </div>
-
-    <div class="d-grid gap-2">
-      <button class="btn" (click)="actualizarcliente()">
-        Actualizar cliente
-      </button>
-    </div>
-  </div>
-
-  <div class="d-grid gap-2">
-    <button class="btn" (click)="tablaclietnes()">Mostrar todos los clientes</button>
   </div>
 </div>

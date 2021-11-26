@@ -198,6 +198,7 @@ export class ClientesComponent implements OnInit {
     if (this.telefono == null || this.nombrecompleto == null || this.email == null || this.direccion == null) {
     this.showNotification('top','right',4);
     } else {
+
     this.objetohttp.put<any>(
       this.res = (this.urlapiGET + "/" + this.id),
       {
