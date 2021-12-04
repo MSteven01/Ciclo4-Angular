@@ -25,6 +25,12 @@ export const ROUTES: RouteInfo[] = [
     title: 'Clientes',
     icon: 'icon-single-02',
     class: ''
+  },
+  {
+    path: '/ventas',
+    title: 'Ventas',
+    icon: 'icon-basket-simple',
+    class: ''
   }
 ];
 

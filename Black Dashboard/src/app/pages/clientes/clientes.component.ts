@@ -107,14 +107,11 @@ export class ClientesComponent implements OnInit {
   direccion!: string;
 
   postData() {
-
     if (this.cedula == null || this.telefono == null || this.nombrecompleto == null || this.email == null || this.direccion == null) {
       this.showNotification('top','right',4);
     } else {
       this.objetohttp.post<any>(
-        //url de la bd
         "http://localhost:8080/api/clientes",
-        //JSON DUMMY
         {
           "cedula": this.cedula,
           "telefono": this.telefono,
@@ -127,6 +124,7 @@ export class ClientesComponent implements OnInit {
         }
       ).subscribe(response => {//Codigo de respuesta
         this.codigorespuesta = response.status;
+        console.log(this.codigorespuesta);
         if (this.codigorespuesta == 201) {
           this.showNotification('top', 'right', 1);
           this.cedula = "";
@@ -134,8 +132,7 @@ export class ClientesComponent implements OnInit {
           this.telefono = "";
           this.email = "";
           this.direccion = "";
-        } else {
-          this.codigorespuesta = 3;
+        } else if(this.codigorespuesta == 226){
           this.showNotification('top', 'right', 3);
         }
       });
@@ -177,7 +174,7 @@ export class ClientesComponent implements OnInit {
 
 
   eliminarcliente() {
-    this.res = this.objetohttp.delete(this.urlapiGET + "/" + this.id);
+    this.res = this.objetohttp.delete(this.urlapiGET + "/cedula/" + this.cedula);
     if (this.id == null) {
       this.showNotification('top', 'right', 5);
     } else {
@@ -185,6 +182,12 @@ export class ClientesComponent implements OnInit {
         this.contenido = data;
         console.log(this.contenido);
         this.showNotification('top','right',7);
+        this.telefono = null;
+        this.nombrecompleto = null;
+        this.email = null;
+        this.direccion = null;
+        this.id = null;
+        this.cedula = null;
       })
     }
   }
@@ -200,7 +203,7 @@ export class ClientesComponent implements OnInit {
     } else {
 
     this.objetohttp.put<any>(
-      this.res = (this.urlapiGET + "/" + this.id),
+      this.res = (this.urlapiGET + "/cedula/" + this.cedula),
       {
         "telefono": this.telefono,
         "nombrecompleto": this.nombrecompleto,
@@ -261,7 +264,7 @@ export class ClientesComponent implements OnInit {
           });
           break;
       case 3:
-        this.toastr.error('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> <b>Error al registrar los datos.</b>', '', {
+        this.toastr.error('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> <b>Error Cedula repetida.</b>', '', {
           disableTimeOut: false,
           enableHtml: true,
           closeButton: true,

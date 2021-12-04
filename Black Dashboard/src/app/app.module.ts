@@ -17,6 +17,7 @@ import { NavbarloginComponent } from './navbarlogin/navbarlogin.component';
 import { ProductosComponent } from './pages/productos/productos.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { TablaclientesComponent } from './pages/clientes/tablaclientes/tablaclientes.component';
+import { VentasComponent } from './pages/ventas/ventas.component';
 
 
 
@@ -32,7 +33,7 @@ import { TablaclientesComponent } from './pages/clientes/tablaclientes/tablaclie
     DataTablesModule,
     ToastrModule.forRoot()   
   ],
-  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, NavbarloginComponent, ProductosComponent, ClientesComponent, TablaclientesComponent],
+  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, NavbarloginComponent, ProductosComponent, ClientesComponent, TablaclientesComponent, VentasComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
