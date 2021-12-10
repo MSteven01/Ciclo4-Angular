@@ -18,6 +18,8 @@ import { ProductosComponent } from './pages/productos/productos.component';
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { TablaclientesComponent } from './pages/clientes/tablaclientes/tablaclientes.component';
 import { VentasComponent } from './pages/ventas/ventas.component';
+import { ConsolidadoComponent } from './pages/consolidado/consolidado.component';
+import { ReportesComponent } from './pages/reportes/reportes.component';
 
 
 
@@ -33,7 +35,7 @@ import { VentasComponent } from './pages/ventas/ventas.component';
     DataTablesModule,
     ToastrModule.forRoot()   
   ],
-  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, NavbarloginComponent, ProductosComponent, ClientesComponent, TablaclientesComponent, VentasComponent],
+  declarations: [AppComponent, AdminLayoutComponent, LoginComponent, NavbarloginComponent, ProductosComponent, ClientesComponent, TablaclientesComponent, VentasComponent, ConsolidadoComponent, ReportesComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

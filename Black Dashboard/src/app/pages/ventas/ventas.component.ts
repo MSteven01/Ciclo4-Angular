@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, throwError } from 'rxjs';
+import { textChangeRangeIsUnchanged } from 'typescript';
 
 @Component({
   selector: 'app-ventas',
@@ -17,6 +18,7 @@ export class VentasComponent implements OnInit {
   urlapiGETclientes: string = "http://localhost:8080/api/clientes";
   urlapiGETventas: string = "http://localhost:8080/api/ventas";
   urlapiGETproducto: string = "http://localhost:8080/api/productos";
+  urlapiGETconsolidado: string = "http://localhost:8080/api/consolidados";
 
 
   handleError(error: HttpErrorResponse) {
@@ -71,7 +73,6 @@ export class VentasComponent implements OnInit {
     this.res.subscribe((datos: any[]) => {
       this.contenido = datos;
       console.log(this.contenido);
-
       this.consecutivo = this.contenido + 1;
     });
   }
@@ -110,7 +111,7 @@ export class VentasComponent implements OnInit {
   
 
     } else {
-      this.res = this.objetohttp.get(this.urlapiGETproducto + "?codigoproductos=" + this.codigoproductos1);
+      this.res = this.objetohttp.get(this.urlapiGETproducto + "?codigoproducto=" + this.codigoproductos1);
       this.res.subscribe((data: any[]) => {
         this.contenido = data;
         console.log(this.contenido);
@@ -142,7 +143,7 @@ export class VentasComponent implements OnInit {
       this.cantidad2 = null;
 
     } else {
-      this.res = this.objetohttp.get(this.urlapiGETproducto + "?codigoproductos=" + this.codigoproductos2);
+      this.res = this.objetohttp.get(this.urlapiGETproducto + "?codigoproducto=" + this.codigoproductos2);
       this.res.subscribe((data: any[]) => {
         this.contenido = data;
         console.log(this.contenido);
@@ -173,7 +174,7 @@ export class VentasComponent implements OnInit {
       this.cantidad3 = null;
 
     } else {
-      this.res = this.objetohttp.get(this.urlapiGETproducto + "?codigoproductos=" + this.codigoproductos3);
+      this.res = this.objetohttp.get(this.urlapiGETproducto + "?codigoproducto=" + this.codigoproductos3);
       this.res.subscribe((data: any[]) => {
         this.contenido = data;
         console.log(this.contenido);
@@ -220,10 +221,9 @@ export class VentasComponent implements OnInit {
   }
 
   /////////////// POST ///////////////////////
-
   enviarventas(){
-    if(this.cedula == null){
-      this.showNotification('top', 'right', 5);
+    if(this.cedula == null || this.codigoproductos1 == null || this.codigoproductos2 == null || this.codigoproductos3 == null){
+      this.showNotification('top', 'right', 4);
     }else{
       this.objetohttp.post<any>(
         "http://localhost:8080/api/ventas",
@@ -232,7 +232,6 @@ export class VentasComponent implements OnInit {
             "codigoventa": this.consecutivo,
             "detalleventa": [
               {
-                 
                   "cantidadproducto": this.cantidad1,
                   "codigoproducto": this.codigoproductos1,
                   "valoriva": 0.19,
@@ -266,16 +265,32 @@ export class VentasComponent implements OnInit {
         console.log(this.codigorespuesta);
         if(this.codigorespuesta == 201){
           this.showNotification("top","right",1);
-        
+         // setTimeout('document.location.reload()',600);
         }else{
           this.showNotification("top","right",6);
         }
       });
     }
   }
-  recargar(){
-    setTimeout('document.location.reload()',600);
+
+
+  /////////////// Consolidado /////////////////////////////
+
+  ciudad!: any;
+
+  enviarconsolidado(){
+    console.log(this.ciudad)
+    console.log(typeof this.ciudad)
+    this.objetohttp.post(this.urlapiGETconsolidado + "/agregar/" + this.ciudad,
+    {},
+    {observe:"response"}).subscribe((response: any) =>{
+      console.log(response.status)
+    });
   }
+
+
+
+  
 
   /////////// NOTIFICACIONES DE TOAST ///////////////////////
 

@@ -138,17 +138,7 @@ export class ProductosComponent implements OnInit {
       this.resultados = await this.fileUploadService.upload(this.file);
       console.log(this.file);
       console.log(this.resultados);
-      this.validacion = 2;
-     
-      /*if(this.resultados[0] == 201){
-        this.validacion = 2;
-        alert("xd")
-        alert(this.resultados)
-      }else{
-        alert(this.resultados)
-        alert("error");
-      }     */
-   
+      this.validacion = 2;   
     }
   }
 }

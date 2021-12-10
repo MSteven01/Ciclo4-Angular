@@ -1,5 +1,10 @@
 <div class="content">
-  <h1 style="text-align: center">Clientes</h1>
+  <h1
+    style="text-align: center; font-size: xxx-large; font-family: serif"
+    class="animate__animated animate__fadeInLeft"
+  >
+    Clientes
+  </h1>
 
   <div
     *ngIf="codigorespuesta == 1"
@@ -101,7 +106,7 @@
         </div>
       </div>
     </div>
-<!--
+    <!--
     <div class="row g-1 mb-3">
       <div class="col-md">
         <div class="form-floating">
@@ -127,10 +132,14 @@
         <button class="btn" (click)="buscarcliente()">Buscar cliente</button>
       </div>
       <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12">
-        <button class="btn" (click)="eliminarcliente()">Eliminar cliente </button>
+        <button class="btn" (click)="eliminarcliente()">
+          Eliminar cliente
+        </button>
       </div>
       <div class="col-xl-3 col-lg-6 col-md-12 col-sm-12">
-        <button class="btn" (click)="actualizarcliente()">Actualizar cliente</button>
+        <button class="btn" (click)="actualizarcliente()">
+          Actualizar cliente
+        </button>
       </div>
       <div class="mt-2 col-xl-12 col-lg-12 col-md-12 col-sm-12 d-grid gap-2">
         <button class="btn" (click)="tablaclietnes()">

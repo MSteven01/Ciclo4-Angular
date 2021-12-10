@@ -35,10 +35,10 @@ export class FileUploadService {
             this.baseApiUrl,
             {
               "codigoproducto": columnas[0],
-              "nombreproducto": columnas[1],
+              "nombreproducto": columnas[3],
               "nitproveedor": columnas[2],
-              "preciocompra": columnas[3],
-              "ivacompra": columnas[4],
+              "preciocompra": columnas[4],
+              "ivacompra": columnas[1],
               "precioventa": columnas[5]
             },
             { observe: 'response' }).subscribe(

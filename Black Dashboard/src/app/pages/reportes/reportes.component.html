@@ -1,0 +1,42 @@
+<div class="content">
+  <h1
+    style="text-align: center; font-size: xxx-large; font-family: serif"
+    class="animate__animated animate__fadeInUp mt-2"
+  >
+    Reportes
+  </h1>
+  <div
+    class="
+      table-responsive-sm
+      table-responsive-md
+      table-responsive-lg
+      table-responsive-xl
+      me-5
+      ms-5
+    "
+  >
+    <table
+      class="compact nowrap table table-dark table-hover"
+      style="font-size: large"
+      datatable
+      [dtOptions]="dtOptions"
+      [dtTrigger]="dtTrigger"
+    >
+      <tbody>
+        <tr *ngFor="let ventas of contenido" class="">
+          <td>{{ ventas.cedulacliente }}</td>
+          <td>{{ ventas.nombrecompleto }}</td>
+          <td>{{ ventas.valorventa }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]="totalventas">
+  </div>
+  <!--div class="position-absolute top-50 start-50 translate-middle">
+  <button class="btn me-2">Clientes</button>
+  <button class="btn">Ventas</button>
+</div-->
+</div>

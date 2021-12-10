@@ -12,6 +12,8 @@ import { ClientesComponent } from "src/app/pages/clientes/clientes.component";
 import { TablaclientesComponent } from "src/app/pages/clientes/tablaclientes/tablaclientes.component";
 import { LoginComponent } from "src/app/login/login.component";
 import { VentasComponent } from "src/app/pages/ventas/ventas.component";
+import { ConsolidadoComponent } from "src/app/pages/consolidado/consolidado.component";
+import { ReportesComponent } from "src/app/pages/reportes/reportes.component";
 
 //import { RtlComponent } from "../../pages/rtl/rtl.component";
 
@@ -27,7 +29,8 @@ export const AdminLayoutRoutes: Routes = [
   { path: 'clientes', component: ClientesComponent },
   { path: 'tablaclientes', component: TablaclientesComponent},
   { path: 'ventas', component: VentasComponent},
-//{ path: 'login', component: LoginComponent}
+  { path: 'consolidado', component: ConsolidadoComponent},
+  { path: 'reportes', component: ReportesComponent}
   
 
 // { path: "rtl", component: RtlComponent }

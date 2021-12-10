@@ -1,0 +1,52 @@
+<div class="content">
+    <h1
+    style="text-align: center; font-size: xxx-large; font-family: serif"
+    class="animate__animated animate__fadeInUp"
+  >
+    Consolidado
+  </h1>
+<div
+  class="
+    table-responsive-sm
+    table-responsive-md
+    table-responsive-lg
+    table-responsive-xl
+    me-5
+    ms-5
+  "
+>
+  <table
+    class="compact nowrap table table-dark table-hover"
+    style="font-size: large;"
+    datatable
+    [dtOptions]="dtOptions"
+    [dtTrigger]="dtTrigger"
+  >
+    <tbody>
+      <tr *ngFor="let consolidado of contenido" class="">
+        <td>{{ consolidado.ciudad }}</td>
+        <td>{{ consolidado.totalventas }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 mt-3">
+  <div class="col-md">
+    <div class="input-group input-group-lg">
+      <span class="input-group-text" id="inputGroup-sizing-lg"
+        >Total ventas</span
+      >
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Sizing example input"
+        aria-describedby="inputGroup-sizing-lg"
+        placeholder="."
+        [(ngModel)]="totalventa"
+        disabled
+      />
+    </div>
+  </div>
+</div>
+</div>

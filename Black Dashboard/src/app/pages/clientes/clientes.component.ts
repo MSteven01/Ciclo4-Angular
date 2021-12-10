@@ -132,7 +132,7 @@ export class ClientesComponent implements OnInit {
           this.telefono = "";
           this.email = "";
           this.direccion = "";
-        } else if(this.codigorespuesta == 226){
+        } else if(this.codigorespuesta == 400){
           this.showNotification('top', 'right', 3);
         }
       });

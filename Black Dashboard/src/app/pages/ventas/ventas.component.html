@@ -1,7 +1,15 @@
 <div class="content">
-  <h1 style="text-align: center">Ventas</h1>
+  <h1
+    style="text-align: center; font-size: xxx-large; font-family: serif"
+    class="animate__animated animate__fadeInRight"
+  >
+    Ventas
+  </h1>
 
-  <div class="registro">
+  <div
+    class="registro p-2"
+    style="background-color: #15171bd6; border-radius: 2%"
+  >
     <div class="row g-2 mb-2">
       <div class="col-md">
         <div class="form-floating">
@@ -304,7 +312,14 @@
     <div class="row g-2 mb-2">
       <div class="col-sm-12 col-md-4 col-lg-6 col-xl-3 col-xxl-2">
         <div class="form-floating">
-          <span></span>
+          <div class="input-group mb-3">
+            <select class="form-select" [(ngModel)]="ciudad">
+              <option selected>Ciudad...</option>
+              <option value="1">Bogotá</option>
+              <option value="2">Medellín</option>
+              <option value="3">Cali</option>
+            </select>
+          </div>
         </div>
       </div>
 
@@ -419,9 +434,9 @@
     </div>
 
     <div class="d-grid gap-2 mt-3">
-        <button class="btn" (click)="enviarventas()">Enviar venta</button>
+      <button class="btn" (click)="enviarventas()" (click)="enviarconsolidado()">Enviar venta</button>
     </div>
- 
 
+  
   </div>
 </div>

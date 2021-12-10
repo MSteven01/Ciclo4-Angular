@@ -31,6 +31,18 @@ export const ROUTES: RouteInfo[] = [
     title: 'Ventas',
     icon: 'icon-basket-simple',
     class: ''
+  },
+  {
+    path: '/consolidado',
+    title: 'Consolidado',
+    icon: 'icon-delivery-fast',
+    class: ''
+  },
+  {
+    path: '/reportes',
+    title: 'Reportes',
+    icon: 'icon-delivery-fast',
+    class: ''
   }
 ];
 

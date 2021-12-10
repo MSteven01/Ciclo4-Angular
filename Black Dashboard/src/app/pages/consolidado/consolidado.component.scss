@@ -35,10 +35,21 @@
   color: #6a6160 !important;
 }
 
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
-    background-color: #1c243961 !important;
-    cursor: not-allowed;
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  background-color: #1c243961 !important;
+  cursor: not-allowed;
 }
-.btn{
+.btn {
   font-size: large !important;
 }
+.input-group:not(.has-validation) > .dropdown-toggle:nth-last-child(n + 3),
+.input-group:not(.has-validation)
+  > :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu) {
+  border-top-right-radius: 0;
+  border-color: #2b3553;
+  border-bottom-right-radius: 0;
+}
+
+
